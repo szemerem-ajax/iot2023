@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UzemController;
 use Database\Factories\MeresAdatFactory;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('app');
-});
+})->name('app');
+
+Route::resource('/uzems', UzemController::class);
