@@ -19,7 +19,6 @@ return new class extends Migration
             $table->dateTime('veg');
             $table->string('egyseg');
             $table->float('ertek');
-            $table->timestamps();
         });
     }
 

@@ -16,6 +16,6 @@ class Uzem extends Model
 
     public function machines(): HasMany
     {
-        return $this->hasMany(Berendezes::class);
+        return $this->hasMany(Berendezes::class, 'uzem_id', 'id');
     }
 }

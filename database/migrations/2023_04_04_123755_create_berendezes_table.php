@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('berendezes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
-            $table->biginteger('szulo')->unsigned();
+            $table->biginteger('szulo')->unsigned()->nullable();
             $table->biginteger('uzem_id')->unsigned();
         });
 
