@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BerendezesController;
 use App\Http\Controllers\UzemController;
 use Database\Factories\MeresAdatFactory;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,7 @@ Route::get('/', function () {
     return view('app');
 })->name('app');
 
-Route::resource('/uzems', UzemController::class);
+Route::resource('/uzems', UzemController::class)->only(['index', 'show']);
+Route::controller(BerendezesController::class)->group(function () {
+    Route::get('/berendezesek/{id}', 'show')->name('berendezesek.show');
+});

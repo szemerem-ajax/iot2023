@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IoT 2023</title>
 
+    @vite('resources/js/app.js')
     @vite('resources/css/app.css')
 </head>
 <body class="antialiased bg-gray-950 text-gray-200 font-mono">

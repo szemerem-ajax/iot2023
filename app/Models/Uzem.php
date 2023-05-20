@@ -18,4 +18,27 @@ class Uzem extends Model
     {
         return $this->hasMany(Berendezes::class, 'uzem_id', 'id');
     }
+
+    public function aktualis()
+    {
+        return EloMeresAdat::with('termeloBerendezes')
+            ->whereHas('termeloBerendezes', function ($builder) {
+                $builder->where('uzem_id', '=', $this->id);
+            })
+            ->groupBy(['ertek', 'egyseg'])
+            ->selectRaw('sum(ertek) as ertek, egyseg')
+            ->get();
+    }
+
+    public function osszes()
+    {
+        return MeresAdat::with('termeloBerendezes')
+            ->whereHas('termeloBerendezes', function ($builder) {
+                $builder->where('uzem_id', '=', $this->id);
+            })
+            ->groupBy(['ertek', 'egyseg', 'kezdes', 'veg'])
+            ->selectRaw('sum(ertek) as ertek, egyseg, kezdes, veg')
+            ->get()
+            ->groupBy('egyseg');
+    }
 }
