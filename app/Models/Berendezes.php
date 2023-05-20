@@ -23,7 +23,7 @@ class Berendezes extends Model
 
     public function meresek(): HasMany
     {
-        return $this->hasMany(MeresAdat::class, 'termeloberendezesid');
+        return $this->hasMany(MeresAdat::class, 'termeloberendezesid')->orderByRaw('kezdes');
     }
 
     public function gyerekek(): HasMany
@@ -47,8 +47,7 @@ class Berendezes extends Model
     {
         return $this->meresek()
             ->orderByRaw('veg desc')
-            ->groupBy(['egyseg', 'ertek', 'veg'])
-            ->distinct(['egyseg'])
+            ->groupBy(['egyseg', 'ertek', 'veg', 'kezdes'])
             ->selectRaw('ertek, egyseg, veg')
             ->get()
             ->groupBy('egyseg');

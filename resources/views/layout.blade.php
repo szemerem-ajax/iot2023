@@ -13,7 +13,7 @@
     <header>
         @include('includes.nav')
     </header>
-    <main class="max-w-4xl mt-4 mx-auto">
+    <main class="max-w-5xl mt-4 mx-auto">
         @yield('content')
     </main>
 </body>

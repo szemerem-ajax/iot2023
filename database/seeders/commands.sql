@@ -1,24 +1,6 @@
-<?php
-
-namespace Database\Seeders;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
-    {
-        DB::unprepared("
 INSERT INTO uzems(name) VALUES
 ('TDK'),('IKEA'),('Schaeffler'),('ECT'),('Audi'),('Mercedes'),('Flextronics'),('Ivy'),('Opel');
-        ");
 
-        DB::unprepared("
 INSERT INTO berendezes(name, szulo, uzem_id) VALUES
 ('CNC 1', NULL, 1),
 ('Compressor', 1, 1),
@@ -552,9 +534,7 @@ INSERT INTO berendezes(name, szulo, uzem_id) VALUES
 ('Compressor', 529, 9),
 ('Heating element', 529, 9),
 ('Extractor fan', 529, 9);
-        ");
 
-        DB::unprepared("
 INSERT INTO meres_adats(termeloberendezesid, kezdes, veg, egyseg, ertek) VALUES
 (1, '2023-05-20T18:55:14', '2023-05-20T18:55:50', 'kWh', 0.069),
 (1, '2023-05-20T18:55:50', '2023-05-20T18:56:47', 'kWh', 231.140),
@@ -42618,9 +42598,7 @@ INSERT INTO meres_adats(termeloberendezesid, kezdes, veg, egyseg, ertek) VALUES
 (532, '2023-05-20T19:17:38', '2023-05-20T19:18:08', 'l/h', 114.52),
 (532, '2023-05-20T19:18:08', '2023-05-20T19:18:38', 'l/h', 167.56),
 (532, '2023-05-20T19:18:38', '2023-05-20T19:19:23', 'l/h', 430.32);
-        ");
 
-        DB::unprepared("
 INSERT INTO elo_meres_adats(termeloberendezesid, egyseg, ertek) VALUES
 (1, 'kWh', 10674.479),(1, 'l/h', 11290.05),
 (2, 'kWh', 11761.369),(2, 'l/h', 11760.68),
@@ -43154,6 +43132,3 @@ INSERT INTO elo_meres_adats(termeloberendezesid, egyseg, ertek) VALUES
 (530, 'kWh', 9784.438),(530, 'l/h', 10934.42),
 (531, 'kWh', 10425.325),(531, 'l/h', 11127.08),
 (532, 'kWh', 13400.756),(532, 'l/h', 7771.83);
-        ");
-    }
-}

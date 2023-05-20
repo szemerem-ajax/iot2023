@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('meres_adats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('termeloberendezesid')->constrained('berendezes');
-            $table->foreignId('meroberendezesid')->constrained('berendezes');
             $table->dateTime('kezdes');
             $table->dateTime('veg');
             $table->string('egyseg');

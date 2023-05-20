@@ -12,8 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::unprepared("CREATE FUNCTION utolsoMeresDatum(termelo INT, mero INT) RETURNS DATETIME DETERMINISTIC BEGIN DECLARE uccso DATETIME; SET uccso = CAST('2023-01-01' AS DATETIME); SELECT veg INTO uccso FROM meres_adats WHERE termeloberendezesid = termelo AND meroberendezesid = mero ORDER BY veg DESC LIMIT 1; RETURN uccso; END");
-        DB::unprepared("CREATE FUNCTION utolsoMeresErtek(termelo INT, mero INT) RETURNS REAL DETERMINISTIC BEGIN DECLARE uccso REAL; SET uccso = 0; SELECT SUM(ertek) INTO uccso FROM meres_adats WHERE termeloberendezesid = termelo AND meroberendezesid = mero; RETURN uccso; END");
+        DB::unprepared("CREATE FUNCTION utolsoMeresDatum(termelo INT, e VARCHAR(255)) RETURNS DATETIME DETERMINISTIC BEGIN DECLARE uccso DATETIME; SET uccso = CAST('2023-01-01' AS DATETIME); SELECT veg INTO uccso FROM meres_adats WHERE termeloberendezesid = termelo AND egyseg = e ORDER BY veg DESC LIMIT 1; RETURN uccso; END");
+        DB::unprepared("CREATE FUNCTION utolsoMeresErtek(termelo INT, e VARCHAR(255)) RETURNS REAL DETERMINISTIC BEGIN DECLARE uccso REAL; SET uccso = 0; SELECT SUM(ertek) INTO uccso FROM meres_adats WHERE termeloberendezesid = termelo AND egyseg = e; RETURN uccso; END");
     }
 
     /**

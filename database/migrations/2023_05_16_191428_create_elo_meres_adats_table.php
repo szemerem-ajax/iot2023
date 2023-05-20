@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('elo_meres_adats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('termeloberendezesid')->constrained('berendezes');
-            $table->foreignId('meroberendezesid')->constrained('berendezes');
             $table->string('egyseg');
             $table->float('ertek');
         });

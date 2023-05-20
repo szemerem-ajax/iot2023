@@ -4,7 +4,7 @@
 
 <h2 class="text-xl mb-2">Live data</h2>
 <input type="hidden" id="data" value="{{ $plant->osszes() }}">
-<div class="flex gap-2 mb-2">
+<div class="grid grid-cols-2 gap-2 mb-2">
     <div class="border-2 border-amber-400 bg-gray-50 p-2">
         <span class="text-gray-900">Electricity consumption</span>
         <canvas id="aram"></canvas>
