@@ -17,7 +17,6 @@
 <script>
     addEventListener("load", (event) => {
         const data = JSON.parse(document.querySelector('#data').value);
-        console.log(data)
 
         const aram = data['kWh'];
         if (aram)
