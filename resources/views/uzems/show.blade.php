@@ -15,14 +15,48 @@
     </div>
 </div>
 <script>
+    function sliceData(data, interval) {
+        data.sort((l, r) => {
+            let a = new Date(l);
+            let b = new Date(r);
+
+            if (a < b) return -1;
+            if (a > b) return 1;
+            else return 0;
+        });
+        const dates = data.map(d => [new Date(d.kezdes), new Date(d.veg)]);
+        const values = data.map(d => d.ertek);
+        let ri = 0;
+        const result = {
+            labels: [],
+            values: []
+        };
+
+        for (let i = 0; i < dates.length; i++) {
+            let ori = i;
+            let [start, end] = dates[i];
+            let value = values[i];
+            let cnt = 1;
+            while (i + 1 < dates.length && dates[i + 1][1] <= end) {
+                value += values[++i];
+                cnt++;
+            }
+
+            result.labels[ri] = data[ori].veg.slice(-8);
+            result.values[ri++] = value / cnt;
+        }
+
+        return result;
+    }
+
     addEventListener("load", (event) => {
         const data = JSON.parse(document.querySelector('#data').value);
 
-        const aram = data['kWh'];
-        drawLineChart('aram', aram.map(d => d.veg.slice(-8)), aram.map(d => d.ertek), 'kWh')
+        const aram = sliceData(data['kWh']);
+        drawLineChart('aram', aram.labels, aram.values, 'kWh');
 
-        const viz = data['l/h']
-        drawLineChart('viz', viz.map(d => d.veg.slice(-8)), viz.map(d => d.ertek), 'l/h')
+        const viz = sliceData(data['l/h']);
+        drawLineChart('viz', viz.labels, viz.values, 'l/h');
     })
 
     function navigate(id) {
